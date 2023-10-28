@@ -139,7 +139,7 @@ def get_training_examples(path, n_per_size=5):
         plt.imshow(sub, cmap='Greys_r')
         plt.ion()
         plt.show()
-        letter = raw_input("Letter (x for none)--> ")
+        letter = input("Letter (x for none)--> ")
         plt.close()
         if letter == 'x':
           cv2.imwrite('train//none//' + image + '_' + str(j) + '.png', sub)

@@ -2,7 +2,11 @@
 A script to test the template matching OCR.
 '''
 
-import chemtype
+import updated_chemtype
+from collections import defaultdict
+import os
+import numpy as np
+import time 
 
 ### globals 
 

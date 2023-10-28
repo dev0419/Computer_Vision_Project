@@ -3,7 +3,7 @@ Testing of the corner and bond detection algorithms.
 '''
 
 import os
-import chemtype
+import updated_chemtype
 from collections import defaultdict
 
 ### globals 
@@ -57,8 +57,8 @@ for path in PATHS:
     if image[len(image)-4:len(image)] != '.png':
       continue
     try:
-      #corr, fp, fn, tp = chemtype.reimplement_polygon(path+image, image[0:11] + '_tol_eq_0.77_template_bb.pickle')
-      corr, fp, fn, tp = chemtype.corner_detector(path+image, 'pickles//' + image[0:11] + '_tol_eq_0.77_template_bb.pickle')
+      #corr, fp, fn, tp = updated_chemtype.reimplement_polygon(path+image, image[0:11] + '_tol_eq_0.77_template_bb.pickle')
+      corr, fp, fn, tp = updated_chemtype.corner_detector(path+image, 'pickles//' + image[0:11] + '_tol_eq_0.77_template_bb.pickle')
       corr_t += corr
       total += 1
       fp_t += fp
@@ -67,8 +67,8 @@ for path in PATHS:
     except IOError:
       pass
     try:
-      #corr, fp, fn, tp = chemtype.reimplement_polygon(path+image, image[0:10] + '_tol_eq_0.77_template_bb.pickle')
-      corr, fp, fn, tp = chemtype.corner_detector(path+image, 'pickles//' + image[0:10] + '_tol_eq_0.77_template_bb.pickle')
+      #corr, fp, fn, tp = updated_chemtype.reimplement_polygon(path+image, image[0:10] + '_tol_eq_0.77_template_bb.pickle')
+      corr, fp, fn, tp = updated_chemtype.corner_detector(path+image, 'pickles//' + image[0:10] + '_tol_eq_0.77_template_bb.pickle')
       corr_t += corr
       total += 1
       fp_t += fp
@@ -88,7 +88,7 @@ for path in PATHS:
     if image[len(image)-4:len(image)] != '.png':
       continue
     try:
-      corr, fp, fn, tp = chemtype.detect_bonds(path+image, 'pickles//' + image[0:11] + '_tol_eq_0.77_template_bb.pickle', image[0:11] + '_corners.pickle')
+      corr, fp, fn, tp = updated_chemtype.detect_bonds(path+image, 'pickles//' + image[0:11] + '_tol_eq_0.77_template_bb.pickle', image[0:11] + '_corners.pickle')
       corr_t += corr
       total += 1
       fp_t += fp
@@ -97,7 +97,7 @@ for path in PATHS:
     except IOError:
       pass
     try:
-      corr, fp, fn, tp = chemtype.detect_bonds(path+image, 'pickles//' + image[0:10] + '_tol_eq_0.77_template_bb.pickle', image[0:10] + '__corners.pickle')
+      corr, fp, fn, tp = updated_chemtype.detect_bonds(path+image, 'pickles//' + image[0:10] + '_tol_eq_0.77_template_bb.pickle', image[0:10] + '__corners.pickle')
       corr_t += corr
       total += 1
       fp_t += fp

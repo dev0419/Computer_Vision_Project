@@ -5,7 +5,7 @@ You'll need the data, pickles, and train dataset as described in the README.
 
 from collections import defaultdict, Counter
 import cv2
-from intersect import intersects
+from updated_intersect import intersects
 import numpy as np
 from matplotlib.patches import Rectangle
 import matplotlib.pyplot as plt
@@ -183,7 +183,7 @@ def all_template_match(templates, template_names, img, tol=0.6, display=False):
     plt.imshow(im)
     plt.ion()
     plt.show()
-    correct = raw_input("Is this correct? (y//n)--> ")
+    correct = input("Is this correct? (y//n)--> ")
     plt.close()
     if correct == 'y':
       acc = 1
@@ -309,16 +309,16 @@ def reimplement_polygon(img, template_dict, min_dist=50):
   plt.title("Centers")
   plt.ion()
   plt.show()
-  c = raw_input("Correct? (y//n) --> ")
-  n = raw_input("Number of nodes --> ")
+  c = input("Correct? (y//n) --> ")
+  n = int(input("Number of nodes --> "))
   if c == 'y':
     corr = 1.0
     fp_float = 0.0
     fn_float = 0.0
   else:
     corr = 0.0
-    fp = raw_input("False positives --> ")
-    fn = raw_input("False negatives --> ")
+    fp = int(input("False positives --> "))
+    fn = int(input("False negatives --> "))
     fp_float = float(fp)
     fn_float = float(fn)
   plt.close()
@@ -357,8 +357,8 @@ def corner_detector(img, template_dict, max_corners = 20, display=True, rect_w=6
     plt.imshow(im)
     plt.ion()
     plt.show()
-    c = raw_input("Correct? (y//n) --> ")
-    n = raw_input("Number of nodes --> ")
+    c = input("Correct? (y//n) --> ")
+    n = int(input("Number of nodes --> "))
     if c == 'y':
       corr = 1.0
       fp_float = 0.0
@@ -367,8 +367,8 @@ def corner_detector(img, template_dict, max_corners = 20, display=True, rect_w=6
         pickle.dump(final_corners, handle)
     else:
       corr = 0.0
-      fp = raw_input("False positives --> ")
-      fn = raw_input("False negatives --> ")
+      fp = int(input("False positives --> "))
+      fn = int(input("False negatives --> "))
       fp_float = float(fp)
       fn_float = float(fn)
     plt.close()
@@ -493,8 +493,8 @@ def detect_bonds(img, template_dict, corner_file, bbox_width=40, angle_tol = 1):
   plt.imshow(display_im)
   plt.ion()
   plt.show()
-  c = raw_input("Correct? (y//n) --> ")
-  n = raw_input("Number of nodes --> ")
+  c = input("Correct? (y//n) --> ")
+  n = int(input("Number of nodes --> "))
   if c == 'y':
     corr = 1.0
     fp_float = 0.0
@@ -503,8 +503,8 @@ def detect_bonds(img, template_dict, corner_file, bbox_width=40, angle_tol = 1):
       pickle.dump(edges, handle)
   else:
     corr = 0.0
-    fp = raw_input("False positives --> ")
-    fn = raw_input("False negatives --> ")
+    fp = int(input("False positives --> "))
+    fn = int(input("False negatives --> "))
     fp_float = float(fp)
     fn_float = float(fn)
   plt.close()
@@ -707,8 +707,8 @@ def classify_bonds(edge_file,img,classifier,label_dict,template_dict_file,rect_w
   plt.imshow(color_im)
   plt.ion()
   plt.show()
-  c = raw_input("Correct? (y//n) --> ")
-  n = raw_input("Number of edges correct --> ")
+  c = input("Correct? (y//n) --> ")
+  n = int(input("Number of edges correct --> "))
   if c == 'y':
     corr = 1.0
   else:
